@@ -1,0 +1,20 @@
+{
+    "name": "greg/cms_slim",
+    "autoload": {
+        "psr-4": {
+            "App\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Greg F",
+            "email": "filliongregoire@gmail.com"
+        }
+    ],
+    "require": {
+        "league/plates": "^3.4",
+        "slim/slim": "^4.10",
+        "slim/psr7": "^1.5",
+        "vlucas/phpdotenv": "^5.4"
+    }
+}
