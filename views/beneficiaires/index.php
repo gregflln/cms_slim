@@ -18,7 +18,7 @@
     let results_count = document.querySelector('#resultats_count');
 
     search.addEventListener('keyup', (e) => {
-        const url = '/api/search?search=' + e.target.value;
+        const url = '/api/search/' + e.target.value;
         fetch(url)
         .then(res => res.json())
         .then(data => {
@@ -36,7 +36,7 @@
             const li = document.createElement('li');
             const res =
             `
-            <a href="/beneficiaires/show?id=${result.id}" class="w-full bg-gray-200 rounded-md flex justify-between items-center hover:bg-blue-200">
+            <a href="/beneficiaires/show/${result.id}" class="w-full bg-gray-200 rounded-md flex justify-between items-center hover:bg-blue-200">
                 <div class="flex flex-col p-5">
                     <span class="font-semibold text-xl">${result.nom} ${result.prenom}</span>
                     <span class="text-gray-500">${result.adresse}</span>

@@ -17,17 +17,11 @@
             <nav class="flex-1 overflow-y-auto">
                 <ul class="py-4 px-2">
                     <li>
-                        <a href="/beneficiaires" class="flex items-center py-2 px-4 hover:bg-gray-700">
+                        <a href="/beneficiaires/" class="flex items-center py-2 px-4 hover:bg-gray-700">
                             <span class="mx-4">Bénéficiaires</span>
                         </a>
-                        <a href="/export" class="flex items-center py-2 px-4 hover:bg-gray-700">
+                        <a href="/export/" class="flex items-center py-2 px-4 hover:bg-gray-700">
                             <span class="mx-4">Générer des exports</span>
-                        </a>
-                        <a href="/beneficiaires" class="flex items-center py-2 px-4 hover:bg-gray-700">
-                            <span class="mx-4">Employées</span>
-                        </a>
-                        <a href="/beneficiaires" class="flex items-center py-2 px-4 hover:bg-gray-700">
-                            <span class="mx-4">Paramètres</span>
                         </a>
                     </li>
                 </ul>

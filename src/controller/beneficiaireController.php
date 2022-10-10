@@ -34,7 +34,7 @@ class BeneficiaireController extends Controller
     public function show(Request $req, Response $res, $args) : Response
     {
         // GET renvoi une vue show d'un beneficiaire
-        $id = $_GET['id'];
+        $id = $args['id'];
 
         $beneficiaire = $this->model->find($id);
 
@@ -104,7 +104,7 @@ class BeneficiaireController extends Controller
         var_dump($data);
         echo '</pre>';
         $this->model->create($data);
-        header('Location: /beneficiaires');
+        return $res->withHeader('Location', '/beneficiaires');
 
     }
     public function edit(Request $req, Response $res, $args) : Response
@@ -149,14 +149,14 @@ class BeneficiaireController extends Controller
         $data = $_POST;
         //data validation
         $this->model->update($id, $data);
-        header('Location: /beneficiaires');
+        return $res->withHeader('Location', '/beneficiaires');
     }
     public function delete(Request $req, Response $res, $args) : Response
     {
         // POST endpoint supprime un beneficiaire
         $id = $_GET['id'];
         $this->model->delete($id);
-        header('Location: /beneficiaires');
+        return $res->withHeader('Location', '/beneficiaires');
 
     }
 }

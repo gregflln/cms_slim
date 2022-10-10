@@ -13,9 +13,7 @@ $app = AppFactory::create();
 
 //instantiate controllers
 $beneficiaires = new App\Controller\BeneficiaireController();
-//$rendezvous = new Controller\RendezVousController();
-//$visites = new Controller\VisiteController();
-//$export = new Controller\ExportController();
+$export = new App\Controller\ExportController();
 $search = new App\Controller\SearchController();
 
 
@@ -24,7 +22,18 @@ $app->group('/auth', function (RouteCollectorProxy $group) {
 });
 $app->group('/beneficiaires', function (RouteCollectorProxy $group) use ($beneficiaires) {
     $group->get('/', $beneficiaires->index(...));
+    $group->get('/show/{id:[0-9]+}', $beneficiaires->show(...));
+    //$group->get('/create', $beneficiaires->create(...));
+    //$group->post('/create', $beneficiaires->store(...));
+    $group->get('/edit/{id}', $beneficiaires->edit(...));
+    $group->post('/update/{id}', $beneficiaires->update(...));
+    $group->get('/delete/{id}', $beneficiaires->delete(...));
 });
+$app->group('/export', function (RouteCollectorProxy $group) use ($export) {
+    $group->get('/', $export->index(...));
+    //$group->get('/export', $export->export(...));
+});
+/*
 $app->group('/rendezvous', function (RouteCollectorProxy $group) {
     //$group->get('/index', Controller\RendezVousController::class . ':index');
     $group->get('/create', Controller\RendezVousController::class . ':create');
@@ -52,10 +61,10 @@ $app->group('/export', function (RouteCollectorProxy $group) {
     //$group->post('/update', Controller\ExportController::class . ':update');
     //$group->get('/delete', Controller\ExportController::class . ':delete');
 });
-
+*/
 //API rest endpoints
 $app->group('/api', function (RouteCollectorProxy $group) use ($search) {
-    $group->get('/search', $search->search(...));
+    $group->get('/search/{search}', $search->search(...));
 });
 
 $app->run();

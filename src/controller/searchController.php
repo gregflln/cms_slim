@@ -3,26 +3,32 @@
 namespace App\Controller;
 
 use App\Controller\Controller;
+use App\Database;
 use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ServerRequestInterface as Request;
 
 
 class SearchController extends Controller
 {
-    public function index(Request $req, Response $res, $args) : Response
+    private \PDO $db;
+
+    public function __construct()
     {
-        return $this->render('beneficiaires/search');
+        parent::__construct();
+        //use invoke function
+        $this->db = (new Database)();
     }
-    
     public function search(Request $req, Response $res, $args) : Response
     {
-        var_dump($args);
         $search = $args['search'];
-        // API fulltext nom prenom search endpoint JSON
+        
         $sql = "SELECT * FROM beneficiaires WHERE nom LIKE :search OR prenom LIKE :search";
+
         $stmt = $this->db->prepare($sql);
         $stmt->execute(['search' => '%' . $search . '%']);
         $result = $stmt->fetchAll();
+        
         $res->getBody()->write(json_encode($result));
+        return $res->withHeader('Content-Type', 'application/json');
     }
 }
