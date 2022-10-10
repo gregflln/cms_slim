@@ -5,6 +5,8 @@ namespace App\Controller;
 use App\Controller\Controller;
 
 use App\Model\ModelBeneficiaire;
+use App\Model\ModelRendezVous;
+use App\Model\ModelVisites;
 
 use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ServerRequestInterface as Request;
@@ -15,12 +17,16 @@ class BeneficiaireController extends Controller
 {
     private ModelBeneficiaire $model;
     private DataList $DataList;
+    private ModelRendezVous $modelRendezVous;
+    private ModelVisites $modelVisites;
 
     public function __construct()
     {
         parent::__construct();
         $this->model = new ModelBeneficiaire();
         $this->DataList = new DataList();
+        $this->modelRendezVous = new ModelRendezVous();
+        $this->modelVisites = new ModelVisites();
     }
     public function index(Request $req, Response $res, $args) : Response
     {
@@ -49,6 +55,10 @@ class BeneficiaireController extends Controller
         $orientation = $this->DataList->getAll('orientation');
         $secteur = $this->DataList->getAll('secteur');
         
+        //rendez vous et visites associées au beneficiaire
+        $rendezVous = $this->modelRendezVous->find($id);
+        $visites = $this->modelVisites->find($id);
+
         $data = [
             'beneficiaire' => $beneficiaire,
             'situation_familiale' => $situation_familiale,
@@ -60,7 +70,9 @@ class BeneficiaireController extends Controller
             'axe_travail' => $axe_travail,
             'partenaires' => $partenaires,
             'orientation' => $orientation,
-            'secteur' => $secteur
+            'secteur' => $secteur,
+            'rendezVous' => $rendezVous,
+            'visites' => $visites
         ];
         return $this->render('beneficiaires/show', [
             'data' => $data
