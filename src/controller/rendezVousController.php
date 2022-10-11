@@ -7,7 +7,7 @@ use App\Controller\Controller;
 use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ServerRequestInterface as Request;
 
-use App\Model\RendezVousModel;
+use App\Model\ModelRendezVous;
 use App\Model\ModelBeneficiaire;
 
 class RendezVousController extends Controller
@@ -51,7 +51,7 @@ class RendezVousController extends Controller
         //data validation
         $this->model->create($data);
         //redirect to index
-        return $res->withHeader('Location', '/beneficiaires/show?id=' . $data['beneficiaire']);
+        return $res->withHeader('Location', '/beneficiaires/show/' . $data['beneficiaire'])->withStatus(302);
     }
 
     public function edit(Request $req, Response $res, $args) : Response

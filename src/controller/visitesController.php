@@ -5,7 +5,7 @@ namespace App\Controller;
 use App\Controller\Controller;
 use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ServerRequestInterface as Request;
-use App\Model\VisitesModel;
+use App\Model\ModelVisites;
 use App\Model\ModelBeneficiaire;
 
 class VisitesController extends Controller

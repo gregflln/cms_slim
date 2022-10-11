@@ -25,7 +25,13 @@ class ModelVisites extends Model
                 $query->setFetchMode(\PDO::FETCH_ASSOC);
                 return $query->fetch();
             }
-    
+            public function findByBeneficiaire(int $id) : array
+            {
+                $query = $this->db->prepare('SELECT * FROM visites WHERE beneficiaire = :id');
+                $query->execute(['id' => $id]);
+                $query->setFetchMode(\PDO::FETCH_ASSOC);
+                return $query->fetchAll();
+            }
             public function create(array $data): void
             {
                 $query = $this->db->prepare('

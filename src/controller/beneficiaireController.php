@@ -56,8 +56,8 @@ class BeneficiaireController extends Controller
         $secteur = $this->DataList->getAll('secteur');
         
         //rendez vous et visites associées au beneficiaire
-        $rendezVous = $this->modelRendezVous->find($id);
-        $visites = $this->modelVisites->find($id);
+        $rendezvous = $this->modelRendezVous->findByBeneficiaire($id);
+        $visites = $this->modelVisites->findByBeneficiaire($id);
 
         $data = [
             'beneficiaire' => $beneficiaire,
@@ -71,7 +71,7 @@ class BeneficiaireController extends Controller
             'partenaires' => $partenaires,
             'orientation' => $orientation,
             'secteur' => $secteur,
-            'rendezVous' => $rendezVous,
+            'rendezvous' => $rendezvous,
             'visites' => $visites
         ];
         return $this->render('beneficiaires/show', [

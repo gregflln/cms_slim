@@ -1,6 +1,8 @@
 <?php $this->layout('beneficiaires/layout') ?>
 
-
+<div class="w-full flex justify-start">
+    <a href="/beneficiaires/create" class="bg-blue-500 text-white text-lg p-4 rounded-md">Ajouter un bénéficiaire</a>
+</div>
 <div class="w-full flexitems-center justify-center">
     <input class="bg-gray-200 shadow-md rounded-md w-full text-xl p-5" autofocus type="search" name="search" id="search" placeholder="rechercher un bénéficiaire (nom OU prénom)">
 </div>

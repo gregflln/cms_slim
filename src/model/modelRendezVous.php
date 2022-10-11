@@ -26,7 +26,13 @@ class ModelRendezVous extends Model
             $query->setFetchMode(\PDO::FETCH_ASSOC);
             return $query->fetch();
         }
-
+        public function findByBeneficiaire(int $id) : array
+        {
+            $query = $this->db->prepare('SELECT * FROM rendezvous WHERE beneficiaire = :id');
+            $query->execute(['id' => $id]);
+            $query->setFetchMode(\PDO::FETCH_ASSOC);
+            return $query->fetchAll();
+        }
         public function create(array $data): void
         {
             $query = $this->db->prepare('
@@ -42,7 +48,6 @@ class ModelRendezVous extends Model
                 :duree
             )
             ');
-            var_dump($data);
             //bind param with SQL types
             $query->bindParam(':beneficiaire', $data['beneficiaire'], \PDO::PARAM_INT);
             $query->bindParam(':date', $data['date'], \PDO::PARAM_STR);
