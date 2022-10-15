@@ -2,7 +2,7 @@
 <div class="w-full h-screen flex items-center justify-center">
     <div class="bg-gray-200 shadow-lg rounded-xl flex flex-col gap-5 p-5">
     <h3>Beneficiaire : <?= $beneficiaire["nom"] ?></h3>
-    <form action="/visites/create" class="flex flex-col gap-5 text-xl" method="post">
+    <form action="/app/visites/create" class="flex flex-col gap-5 text-xl" method="post">
     <input type="hidden" name="beneficiaire" value="<?= $beneficiaire["id"] ?>">
     <div class="form-group">
         <label for="date">Date</label>

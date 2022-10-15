@@ -17,7 +17,7 @@ class Controller
     {
         $this->plates = new Engine(__DIR__ . '/../../views');
     }
-    protected function render(string $view, array  $data) : Response
+    protected function render(string $view, array  $data = []) : Response
     {
         $fatory = new ResponseFactory();
         $response = $fatory->createResponse();

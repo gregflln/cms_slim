@@ -1,6 +1,6 @@
 <?php $this->layout('beneficiaires/layout') ?>
 
-<form action="/beneficiaires/create" method="post" class="flex flex-col">
+<form action="/app/beneficiaires/create" method="post" class="flex flex-col">
     <label for="nom">nom</label>
     <input type="text" name="nom" id="nom" placeholder="nom">
     <label for="prenom">prenom</label>

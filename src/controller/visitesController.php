@@ -11,6 +11,8 @@ use App\Model\ModelBeneficiaire;
 class VisitesController extends Controller
 
 {
+    private ModelBeneficiaire $modelBeneficiaire;
+    private ModelVisites $model;
     public function __construct()
     {
         parent::__construct();
@@ -70,7 +72,7 @@ class VisitesController extends Controller
         //use model to update rendez-vous from post data
         $data = $_POST;
         //data validation
-        $this->model->update($data);
+        $this->model->update($data['id'],$data);
         //redirect to index
         return $res->withHeader('Location', '/visites');
     }
@@ -79,7 +81,7 @@ class VisitesController extends Controller
         //use model to delete rendez-vous from post data
         $data = $_POST;
         //data validation
-        $this->model->delete($data);
+        $this->model->delete($data['id'], $data);
         //redirect to index
         return $res->withHeader('Location', '/visites');
     }
