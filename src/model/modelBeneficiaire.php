@@ -99,43 +99,24 @@ class ModelBeneficiaire extends Model
     {
         //update query
         $query = $this->db->prepare('
-        INSERT INTO beneficiaires (
-            nom,
-            prenom,
-            date_naissance,
-            adresse,
-            code_postal,
-            ville,
-            telephone,
-            email,
-            age,
-            date_inscription,
-            nombre_enfant,
-            partenaires,
-            secteur,
-            sante,
-            niveau_etude,
-            situation_professionnelle
-
-        ) VALUES
-        (
-            :nom,
-            :prenom,
-            :date_naissance,
-            :adresse,
-            :code_postal,
-            :ville,
-            :telephone,
-            :email,
-            :age,
-            :date_inscription,
-            :nombre_enfant,
-            :partenaires,
-            :secteur,
-            :sante,
-            :niveau_etude,
-            :situation_professionnelle
-        ) WHERE id = :id
+        UPDATE beneficiaires SET
+            nom = :nom,
+            prenom = :prenom,
+            date_naissance = :date_naissance,
+            adresse = :adresse,
+            code_postal = :code_postal,
+            ville = :ville,
+            telephone = :telephone,
+            email = :email,
+            age = :age,
+            date_inscription = :date_inscription,
+            nombre_enfant = :nombre_enfant,
+            partenaires = :partenaires,
+            secteur = :secteur,
+            sante = :sante,
+            niveau_etude = :niveau_etude,
+            situation_professionnelle = :situation_professionnelle
+        WHERE id = :id
         ');
 
         //calcule age

@@ -93,7 +93,7 @@ class BeneficiaireController extends Controller
         // POST endpoint sauvegarde un beneficiaire
         $data = $req->getParsedBody();
         $this->model->create($data);
-        return $res->withHeader('Location', '/beneficiaires');
+        return $res->withAddedHeader('Location', '/app/beneficiaires/')->withStatus(302);
 
     }
     public function edit(Request $req, Response $res, $args) : Response
@@ -128,14 +128,14 @@ class BeneficiaireController extends Controller
         $data = $req->getParsedBody();
         //data validation
         $this->model->update($id, $data);
-        return $res->withHeader('Location', '/beneficiaires');
+        return $res->withHeader('Location', '/app/beneficiaires/')->withStatus(302);
     }
     public function delete(Request $req, Response $res, $args) : Response
     {
         // POST endpoint supprime un beneficiaire
         $id = $args['id'];
         $this->model->delete($id);
-        return $res->withHeader('Location', '/beneficiaires');
+        return $res->withHeader('Location', '/app/beneficiaires/')->withStatus(302);
 
     }
 }
