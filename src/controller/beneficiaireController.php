@@ -44,15 +44,10 @@ class BeneficiaireController extends Controller
 
         $beneficiaire = $this->model->find($id);
 
-        $situation_familiale = $this->DataList->getAll('situation_familiale');
         $situation_professionnelle = $this->DataList->getAll('situation_professionnelle');
-        $situation_ressources = $this->DataList->getAll('situation_ressources');
-        $type_logement = $this->DataList->getAll('type_logement');
         $niveau_etude = $this->DataList->getAll('niveau_etude');
         $sante = $this->DataList->getAll('sante');
-        $axe_travail = $this->DataList->getAll('axe_travail');
         $partenaires = $this->DataList->getAll('partenaires');
-        $orientation = $this->DataList->getAll('orientation');
         $secteur = $this->DataList->getAll('secteur');
         
         //rendez vous et visites associées au beneficiaire
@@ -61,15 +56,10 @@ class BeneficiaireController extends Controller
 
         $data = [
             'beneficiaire' => $beneficiaire,
-            'situation_familiale' => $situation_familiale,
             'situation_professionnelle' => $situation_professionnelle,
-            'situation_ressources' => $situation_ressources,
-            'type_logement' => $type_logement,
             'niveau_etude' => $niveau_etude,
             'sante' => $sante,
-            'axe_travail' => $axe_travail,
             'partenaires' => $partenaires,
-            'orientation' => $orientation,
             'secteur' => $secteur,
             'rendezvous' => $rendezvous,
             'visites' => $visites
@@ -81,27 +71,17 @@ class BeneficiaireController extends Controller
     public function create(Request $req, Response $res, $args) : Response
     {
         // GET renvoi une vue create avec formulaire pour creer un beneficiaire
-        $situation_familiale = $this->DataList->getAll('situation_familiale');
         $situation_professionnelle = $this->DataList->getAll('situation_professionnelle');
-        $situation_ressources = $this->DataList->getAll('situation_ressources');
-        $type_logement = $this->DataList->getAll('type_logement');
         $niveau_etude = $this->DataList->getAll('niveau_etude');
         $sante = $this->DataList->getAll('sante');
-        $axe_travail = $this->DataList->getAll('axe_travail');
         $partenaires = $this->DataList->getAll('partenaires');
-        $orientation = $this->DataList->getAll('orientation');
         $secteur = $this->DataList->getAll('secteur');
         
         $data = [
-            'situation_familiale' => $situation_familiale,
             'situation_professionnelle' => $situation_professionnelle,
-            'situation_ressources' => $situation_ressources,
-            'type_logement' => $type_logement,
             'niveau_etude' => $niveau_etude,
             'sante' => $sante,
-            'axe_travail' => $axe_travail,
             'partenaires' => $partenaires,
-            'orientation' => $orientation,
             'secteur' => $secteur
         ];
         return $this->render('app/beneficiaires/add', [
@@ -123,28 +103,18 @@ class BeneficiaireController extends Controller
 
         $beneficiaire = $this->model->find($id);
 
-        $situation_familiale = $this->DataList->getAll('situation_familiale');
         $situation_professionnelle = $this->DataList->getAll('situation_professionnelle');
-        $situation_ressources = $this->DataList->getAll('situation_ressources');
-        $type_logement = $this->DataList->getAll('type_logement');
         $niveau_etude = $this->DataList->getAll('niveau_etude');
         $sante = $this->DataList->getAll('sante');
-        $axe_travail = $this->DataList->getAll('axe_travail');
         $partenaires = $this->DataList->getAll('partenaires');
-        $orientation = $this->DataList->getAll('orientation');
         $secteur = $this->DataList->getAll('secteur');
         
         $data = [
             'beneficiaire' => $beneficiaire,
-            'situation_familiale' => $situation_familiale,
             'situation_professionnelle' => $situation_professionnelle,
-            'situation_ressources' => $situation_ressources,
-            'type_logement' => $type_logement,
             'niveau_etude' => $niveau_etude,
             'sante' => $sante,
-            'axe_travail' => $axe_travail,
             'partenaires' => $partenaires,
-            'orientation' => $orientation,
             'secteur' => $secteur
         ];
         return $this->render('app/beneficiaires/edit', [

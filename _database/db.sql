@@ -55,7 +55,7 @@ CREATE TABLE IF NOT EXISTS `beneficiaires` (
   `age` tinyint(4) NOT NULL,
   `date_inscription` date NOT NULL,
   `situation_familiale` int(11) unsigned NOT NULL,
-  `nombre_enfant` tinyint(3) unsigned NOT NULL DEFAULT '0',
+  `nombre_enfant` tinyint(3) unsigned NOT NULL,
   `orientation` int(11) unsigned NOT NULL,
   `partenaires` int(11) unsigned NOT NULL,
   `type_logement` int(11) unsigned NOT NULL,
@@ -63,7 +63,7 @@ CREATE TABLE IF NOT EXISTS `beneficiaires` (
   `situation_ressources` int(10) unsigned NOT NULL,
   `rsa` int(11) NOT NULL,
   `service_instructeur_referent` varchar(50) NOT NULL,
-  `etranger` bit(1) NOT NULL DEFAULT b'0',
+  `etranger` bit(1) NOT NULL,
   `sante` int(11) unsigned NOT NULL,
   `niveau_etude` int(11) unsigned NOT NULL,
   `situation_professionnelle` int(11) unsigned NOT NULL,
@@ -91,7 +91,7 @@ CREATE TABLE IF NOT EXISTS `beneficiaires` (
   CONSTRAINT `FK_beneficiaires_type_logement` FOREIGN KEY (`type_logement`) REFERENCES `type_logement` (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=latin1 COMMENT='table des beneficiaire, element central';
 
--- Listage des données de la table db.beneficiaires : ~1 rows (environ)
+-- Listage des données de la table db.beneficiaires : ~2 rows (environ)
 /*!40000 ALTER TABLE `beneficiaires` DISABLE KEYS */;
 INSERT INTO `beneficiaires` (`id`, `nom`, `prenom`, `date_creation`, `id_ss`, `id_rsa`, `id_mdd`, `id_pe`, `date_naissance`, `adresse`, `code_postal`, `ville`, `telephone`, `email`, `age`, `date_inscription`, `situation_familiale`, `nombre_enfant`, `orientation`, `partenaires`, `type_logement`, `secteur`, `situation_ressources`, `rsa`, `service_instructeur_referent`, `etranger`, `sante`, `niveau_etude`, `situation_professionnelle`, `axe_travail`) VALUES
 	(4, 'greg', 'fillion', '2022-09-29 15:19:48', '45er poz', '456', 'orleans', 'xwcxwx', '2022-09-02', 'wxc', 'xwc', 'xwc', 'xwcwcx', 'wxc@gmail.com', 0, '2022-09-21', 1, 21, 1, 1, 1, 1, 1, 0, '1', b'0', 1, 1, 1, 1),
@@ -150,6 +150,37 @@ INSERT INTO `partenaires` (`id`, `partenaires`) VALUES
 	(4, 'MDPH');
 /*!40000 ALTER TABLE `partenaires` ENABLE KEYS */;
 
+-- Listage de la structure de la table db. rendezvous
+CREATE TABLE IF NOT EXISTS `rendezvous` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `beneficiaire` int(11) NOT NULL,
+  `date` date NOT NULL,
+  `motif` varchar(50) NOT NULL,
+  `duree` int(11) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=latin1;
+
+-- Listage des données de la table db.rendezvous : ~14 rows (environ)
+/*!40000 ALTER TABLE `rendezvous` DISABLE KEYS */;
+INSERT INTO `rendezvous` (`id`, `beneficiaire`, `date`, `motif`, `duree`) VALUES
+	(1, 4, '2022-10-19', 'logement', 125),
+	(2, 4, '2022-10-21', 'leihrgegr', 123),
+	(3, 4, '2022-10-14', 'logement', 123),
+	(4, 4, '2022-10-07', 'logement', 123),
+	(5, 4, '2022-10-20', 'logement', 123),
+	(6, 4, '2022-10-07', 'logement', 45),
+	(7, 4, '2022-10-10', 'machin', 120),
+	(8, 4, '2022-10-10', 'machin', 120),
+	(9, 4, '2022-10-10', 'machin', 120),
+	(10, 4, '2022-10-10', 'machin', 120),
+	(11, 4, '2022-10-10', 'machin', 120),
+	(12, 4, '2022-10-10', 'machin', 120),
+	(13, 4, '2022-10-10', 'machin', 120),
+	(14, 4, '2022-10-10', 'machin', 120),
+	(15, 4, '2022-10-10', 'machin', 120),
+	(16, 4, '2022-10-10', 'machin', 120);
+/*!40000 ALTER TABLE `rendezvous` ENABLE KEYS */;
+
 -- Listage de la structure de la table db. sante
 CREATE TABLE IF NOT EXISTS `sante` (
   `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
@@ -158,7 +189,7 @@ CREATE TABLE IF NOT EXISTS `sante` (
   KEY `id` (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
 
--- Listage des données de la table db.sante : ~3 rows (environ)
+-- Listage des données de la table db.sante : ~2 rows (environ)
 /*!40000 ALTER TABLE `sante` DISABLE KEYS */;
 INSERT INTO `sante` (`id`, `sante`) VALUES
 	(1, 'suivi généraliste'),
@@ -251,6 +282,39 @@ INSERT INTO `type_logement` (`id`, `type_logement`) VALUES
 	(3, 'hebergé'),
 	(4, 'autres');
 /*!40000 ALTER TABLE `type_logement` ENABLE KEYS */;
+
+-- Listage de la structure de la table db. users
+CREATE TABLE IF NOT EXISTS `users` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `email` varchar(50) NOT NULL,
+  `password` varchar(64) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+
+-- Listage des données de la table db.users : ~0 rows (environ)
+/*!40000 ALTER TABLE `users` DISABLE KEYS */;
+INSERT INTO `users` (`id`, `email`, `password`) VALUES
+	(1, 'filliongregoire@gmail.com', '8d969eef6ecad3c29a3a629280e686cf0c3f5d5a86aff3ca12020c923adc6c92');
+/*!40000 ALTER TABLE `users` ENABLE KEYS */;
+
+-- Listage de la structure de la table db. visites
+CREATE TABLE IF NOT EXISTS `visites` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `date` date NOT NULL,
+  `motif` varchar(50) NOT NULL,
+  `duree` int(11) NOT NULL,
+  `beneficiaire` int(11) NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `beneficiaire` (`beneficiaire`)
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
+
+-- Listage des données de la table db.visites : ~2 rows (environ)
+/*!40000 ALTER TABLE `visites` DISABLE KEYS */;
+INSERT INTO `visites` (`id`, `date`, `motif`, `duree`, `beneficiaire`) VALUES
+	(1, '2022-10-20', 'test', 123, 4),
+	(2, '2022-10-20', 'test', 123, 4),
+	(3, '2022-10-07', 'logement', 120, 4);
+/*!40000 ALTER TABLE `visites` ENABLE KEYS */;
 
 /*!40101 SET SQL_MODE=IFNULL(@OLD_SQL_MODE, '') */;
 /*!40014 SET FOREIGN_KEY_CHECKS=IFNULL(@OLD_FOREIGN_KEY_CHECKS, 1) */;

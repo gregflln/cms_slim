@@ -6,7 +6,6 @@ use App\Model\Model;
 
 class ModelBeneficiaire extends Model
 {
-    
     public function __construct()
     {
         parent::__construct();
@@ -32,10 +31,6 @@ class ModelBeneficiaire extends Model
         INSERT INTO beneficiaires (
             nom,
             prenom,
-            id_ss,
-            id_rsa,
-            id_mdd,
-            id_pe,
             date_naissance,
             adresse,
             code_postal,
@@ -44,29 +39,17 @@ class ModelBeneficiaire extends Model
             email,
             age,
             date_inscription,
-            situation_familiale,
             nombre_enfant,
-            orientation,
             partenaires,
-            type_logement,
             secteur,
-            situation_ressources,
-            rsa,
-            service_instructeur_referent,
-            etranger,
             sante,
             niveau_etude,
-            situation_professionnelle,
-            axe_travail
+            situation_professionnelle
 
         ) VALUES
         (
             :nom,
             :prenom,
-            :id_ss,
-            :id_rsa,
-            :id_mdd,
-            :id_pe,
             :date_naissance,
             :adresse,
             :code_postal,
@@ -75,20 +58,12 @@ class ModelBeneficiaire extends Model
             :email,
             :age,
             :date_inscription,
-            :situation_familiale,
             :nombre_enfant,
-            :orientation,
             :partenaires,
-            :type_logement,
             :secteur,
-            :situation_ressources,
-            :rsa,
-            :service_instructeur_referent,
-            :etranger,
             :sante,
             :niveau_etude,
-            :situation_professionnelle,
-            :axe_travail
+            :situation_professionnelle
         )
         ');
 
@@ -102,10 +77,6 @@ class ModelBeneficiaire extends Model
         //bind all values with PARAM_ type
         $query->bindValue(':nom', $data['nom'], \PDO::PARAM_STR);
         $query->bindValue(':prenom', $data['prenom'], \PDO::PARAM_STR);
-        $query->bindValue(':id_ss', $data['id_ss'], \PDO::PARAM_STR);
-        $query->bindValue(':id_rsa', $data['id_rsa'], \PDO::PARAM_STR);
-        $query->bindValue(':id_mdd', $data['id_mdd'], \PDO::PARAM_STR);
-        $query->bindValue(':id_pe', $data['id_pe'], \PDO::PARAM_STR);
         $query->bindValue(':date_naissance', $data['date_naissance'], \PDO::PARAM_STR);
         $query->bindValue(':adresse', $data['adresse'], \PDO::PARAM_STR);
         $query->bindValue(':code_postal', $data['code_postal'], \PDO::PARAM_STR);
@@ -114,20 +85,12 @@ class ModelBeneficiaire extends Model
         $query->bindValue(':email', $data['email'], \PDO::PARAM_STR);
         $query->bindValue(':age', $age, \PDO::PARAM_INT);
         $query->bindValue(':date_inscription', $data['date_inscription'], \PDO::PARAM_STR);
-        $query->bindValue(':situation_familiale', $data['situation_familiale'], \PDO::PARAM_INT);
         $query->bindValue(':nombre_enfant', $data['nombre_enfant'], \PDO::PARAM_INT);
-        $query->bindValue(':orientation', $data['orientation'], \PDO::PARAM_INT);
         $query->bindValue(':partenaires', $data['partenaires'], \PDO::PARAM_INT);
-        $query->bindValue(':type_logement', $data['type_logement'], \PDO::PARAM_INT);
         $query->bindValue(':secteur', $data['secteur'], \PDO::PARAM_INT);
-        $query->bindValue(':situation_ressources', $data['situation_ressources'], \PDO::PARAM_INT);
-        $query->bindValue(':rsa', $data['rsa'], \PDO::PARAM_INT);
-        $query->bindValue(':service_instructeur_referent', $data['service_instructeur_referent'], \PDO::PARAM_STR);
-        $query->bindValue(':etranger', $data['etranger'], \PDO::PARAM_INT);
         $query->bindValue(':sante', $data['sante'], \PDO::PARAM_INT);
         $query->bindValue(':niveau_etude', $data['niveau_etude'], \PDO::PARAM_INT);
         $query->bindValue(':situation_professionnelle', $data['situation_professionnelle'], \PDO::PARAM_INT);
-        $query->bindValue(':axe_travail', $data['axe_travail'], \PDO::PARAM_INT);
 
         //execute query
         $query->execute();
@@ -139,10 +102,6 @@ class ModelBeneficiaire extends Model
         INSERT INTO beneficiaires (
             nom,
             prenom,
-            id_ss,
-            id_rsa,
-            id_mdd,
-            id_pe,
             date_naissance,
             adresse,
             code_postal,
@@ -151,29 +110,17 @@ class ModelBeneficiaire extends Model
             email,
             age,
             date_inscription,
-            situation_familiale,
             nombre_enfant,
-            orientation,
             partenaires,
-            type_logement,
             secteur,
-            situation_ressources,
-            rsa,
-            service_instructeur_referent,
-            etranger,
             sante,
             niveau_etude,
-            situation_professionnelle,
-            axe_travail
+            situation_professionnelle
 
         ) VALUES
         (
             :nom,
             :prenom,
-            :id_ss,
-            :id_rsa,
-            :id_mdd,
-            :id_pe,
             :date_naissance,
             :adresse,
             :code_postal,
@@ -182,20 +129,12 @@ class ModelBeneficiaire extends Model
             :email,
             :age,
             :date_inscription,
-            :situation_familiale,
             :nombre_enfant,
-            :orientation,
             :partenaires,
-            :type_logement,
             :secteur,
-            :situation_ressources,
-            :rsa,
-            :service_instructeur_referent,
-            :etranger,
             :sante,
             :niveau_etude,
-            :situation_professionnelle,
-            :axe_travail
+            :situation_professionnelle
         ) WHERE id = :id
         ');
 
@@ -212,10 +151,6 @@ class ModelBeneficiaire extends Model
         //bind all values with PARAM_ type
         $query->bindValue(':nom', $data['nom'], \PDO::PARAM_STR);
         $query->bindValue(':prenom', $data['prenom'], \PDO::PARAM_STR);
-        $query->bindValue(':id_ss', $data['id_ss'], \PDO::PARAM_STR);
-        $query->bindValue(':id_rsa', $data['id_rsa'], \PDO::PARAM_STR);
-        $query->bindValue(':id_mdd', $data['id_mdd'], \PDO::PARAM_STR);
-        $query->bindValue(':id_pe', $data['id_pe'], \PDO::PARAM_STR);
         $query->bindValue(':date_naissance', $data['date_naissance'], \PDO::PARAM_STR);
         $query->bindValue(':adresse', $data['adresse'], \PDO::PARAM_STR);
         $query->bindValue(':code_postal', $data['code_postal'], \PDO::PARAM_STR);
@@ -224,20 +159,12 @@ class ModelBeneficiaire extends Model
         $query->bindValue(':email', $data['email'], \PDO::PARAM_STR);
         $query->bindValue(':age', $age, \PDO::PARAM_INT);
         $query->bindValue(':date_inscription', $data['date_inscription'], \PDO::PARAM_STR);
-        $query->bindValue(':situation_familiale', $data['situation_familiale'], \PDO::PARAM_INT);
         $query->bindValue(':nombre_enfant', $data['nombre_enfant'], \PDO::PARAM_INT);
-        $query->bindValue(':orientation', $data['orientation'], \PDO::PARAM_INT);
         $query->bindValue(':partenaires', $data['partenaires'], \PDO::PARAM_INT);
-        $query->bindValue(':type_logement', $data['type_logement'], \PDO::PARAM_INT);
         $query->bindValue(':secteur', $data['secteur'], \PDO::PARAM_INT);
-        $query->bindValue(':situation_ressources', $data['situation_ressources'], \PDO::PARAM_INT);
-        $query->bindValue(':rsa', $data['rsa'], \PDO::PARAM_INT);
-        $query->bindValue(':service_instructeur_referent', $data['service_instructeur_referent'], \PDO::PARAM_STR);
-        $query->bindValue(':etranger', $data['etranger'], \PDO::PARAM_INT);
         $query->bindValue(':sante', $data['sante'], \PDO::PARAM_INT);
         $query->bindValue(':niveau_etude', $data['niveau_etude'], \PDO::PARAM_INT);
         $query->bindValue(':situation_professionnelle', $data['situation_professionnelle'], \PDO::PARAM_INT);
-        $query->bindValue(':axe_travail', $data['axe_travail'], \PDO::PARAM_INT);
 
         //execute query
         $query->execute();
