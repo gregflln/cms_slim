@@ -1,4 +1,4 @@
-<?php $this->layout('beneficiaires/layout') ?>
+<?php $this->layout('app/beneficiaires/layout') ?>
 
 <div class="w-full flex justify-start">
     <a href="/app/beneficiaires/create" class="bg-blue-500 text-white text-lg p-4 rounded-md">Ajouter un bénéficiaire</a>

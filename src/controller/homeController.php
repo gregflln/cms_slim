@@ -15,6 +15,6 @@ class HomeController extends Controller
     }
     public function index(Request $req, Response $res, $args) : Response
     {
-        return $this->render('home',[]);
+        return $this->render('app/home',[]);
     }
 }

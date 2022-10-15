@@ -33,7 +33,7 @@ class BeneficiaireController extends Controller
         // GET renvoi une vue list des beneficiaires
         $beneficiaires = $this->model->all();
 
-        return $this->render('beneficiaires/index', [
+        return $this->render('app/beneficiaires/index', [
             'beneficiaires' => $beneficiaires
         ]);
     }
@@ -74,7 +74,7 @@ class BeneficiaireController extends Controller
             'rendezvous' => $rendezvous,
             'visites' => $visites
         ];
-        return $this->render('beneficiaires/show', [
+        return $this->render('app/beneficiaires/show', [
             'data' => $data
         ]);
     }
@@ -104,17 +104,14 @@ class BeneficiaireController extends Controller
             'orientation' => $orientation,
             'secteur' => $secteur
         ];
-        return $this->render('beneficiaires/add', [
+        return $this->render('app/beneficiaires/add', [
             'data' => $data
         ]);
     }
     public function store(Request $req, Response $res, $args) : Response
     {
         // POST endpoint sauvegarde un beneficiaire
-        $data = $_POST;
-        echo '<pre>';
-        var_dump($data);
-        echo '</pre>';
+        $data = $req->getParsedBody();
         $this->model->create($data);
         return $res->withHeader('Location', '/beneficiaires');
 
@@ -122,7 +119,7 @@ class BeneficiaireController extends Controller
     public function edit(Request $req, Response $res, $args) : Response
     {
         // GET renvoi une vue edit avec formulaire pour modifier un beneficiaire
-        $id = $_GET['id'];
+        $id = $args['id'];
 
         $beneficiaire = $this->model->find($id);
 
@@ -150,15 +147,15 @@ class BeneficiaireController extends Controller
             'orientation' => $orientation,
             'secteur' => $secteur
         ];
-        return $this->render('beneficiaires/edit', [
+        return $this->render('app/beneficiaires/edit', [
             'data' => $data
         ]);
     }
     public function update(Request $req, Response $res, $args) : Response
     {
         // POST endpoint modifie un beneficiaire
-        $id = $_GET['id'];
-        $data = $_POST;
+        $id = $args['id'];
+        $data = $req->getParsedBody();
         //data validation
         $this->model->update($id, $data);
         return $res->withHeader('Location', '/beneficiaires');
@@ -166,7 +163,7 @@ class BeneficiaireController extends Controller
     public function delete(Request $req, Response $res, $args) : Response
     {
         // POST endpoint supprime un beneficiaire
-        $id = $_GET['id'];
+        $id = $args['id'];
         $this->model->delete($id);
         return $res->withHeader('Location', '/beneficiaires');
 

@@ -23,7 +23,7 @@ class VisitesController extends Controller
     {
         //display all visites
         $visites = $this->model->all();
-        return $this->render('visites/index', [
+        return $this->render('app/visites/index', [
             'visites' => $visites
         ]);
     }
@@ -34,7 +34,7 @@ class VisitesController extends Controller
 
         $visite = $this->model->find($id);
 
-        return $this->render('visites/show', [
+        return $this->render('app/visites/show', [
             'visite' => $visite
         ]);
     }
@@ -42,7 +42,7 @@ class VisitesController extends Controller
     {
         $id = $args['benefid'];
         $beneficiaire = $this->modelBeneficiaire->find($id);
-        return $this->render('visites/create', [
+        return $this->render('app/visites/create', [
             'beneficiaire' => $beneficiaire
         ]);
     }
@@ -63,7 +63,7 @@ class VisitesController extends Controller
 
         $visite = $this->model->find($id);
 
-        return $this->render('visites/edit', [
+        return $this->render('app/visites/edit', [
             'visite' => $visite
         ]);
     }

@@ -30,7 +30,7 @@ class RendezVousController extends Controller
 
         $rendezvous = $this->model->find($id);
 
-        return $this->render('rendezvous/show', [
+        return $this->render('app/endezvous/show', [
             'rendezvous' => $rendezvous
         ]);
     }
@@ -39,7 +39,7 @@ class RendezVousController extends Controller
     {
         $id = $args['benefid'];
         $beneficiaire = $this->modelBeneficiaire->find($id);
-        return $this->render('rendezvous/create', [
+        return $this->render('app/rendezvous/create', [
             'beneficiaire' => $beneficiaire
         ]);
     }
@@ -56,12 +56,12 @@ class RendezVousController extends Controller
 
     public function edit(Request $req, Response $res, $args) : Response
     {
-        return $this->render('rendezvous/edit',[]);
+        return $this->render('app/rendezvous/edit',[]);
     }
 
     public function update(Request $req, Response $res, $args) : Response
     {
-        return $this->render('rendezvous/update',[]);
+        return $this->render('app/rendezvous/update',[]);
     }
 
     public function delete(Request $req, Response $res, $args) : Response

@@ -1,4 +1,4 @@
-<?php $this->layout('beneficiaires/layout') ?>
+<?php $this->layout('app/beneficiaires/layout') ?>
 
 <form action="/app/beneficiaires/create" method="post" class="flex flex-col">
     <label for="nom">nom</label>

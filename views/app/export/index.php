@@ -1,4 +1,4 @@
-<?php $this->layout('export/layout') ?>
+<?php $this->layout('app/export/layout') ?>
 <h1 class="text-2xl font-semibold">Exporter les données</h1>
 
 <div class="flex justify-start gap-5">
