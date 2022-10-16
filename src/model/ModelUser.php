@@ -8,6 +8,12 @@ class ModelUser extends Model
     {
         parent::__construct();
     }
+    public function all(): array
+    {
+        $query = $this->db->query('SELECT * FROM users');
+        $query->setFetchMode(\PDO::FETCH_ASSOC);
+        return $query->fetchAll();
+    }
     public function findByEmail(string $email) : array | bool
     {
         $sql = "SELECT * FROM users WHERE email = :email";

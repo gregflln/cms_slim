@@ -14,10 +14,13 @@
                         <a href="/app/export/" class="flex items-center py-2 px-4 hover:bg-gray-700">
                             <span class="mx-4">Générer des exports</span>
                         </a>
+                        <a href="/app/admin/users" class="flex items-center py-2 px-4 hover:bg-gray-700">
+                            <span class="mx-4">Générer les utilisateur (admin)</span>
+                        </a>
                     </li>
                 </ul>
             </nav>
-            <a href="/auth/logout">Se déconnecter</a>
+            <a href="/auth/logout" class="w-full text-center py-3 text-white bg-black">Se déconnecter</a>
         </aside>
         <div class="flex-1 p-10">
             <?= $this->section('content')?>

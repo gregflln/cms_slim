@@ -6,17 +6,17 @@
     <input type="hidden" name="beneficiaire" value="<?= $beneficiaire["id"] ?>">
     <div class="form-group">
         <label for="date">Date</label>
-        <input type="date" class="form-control" id="date" name="date" placeholder="Date">
+        <input type="date" required class="form-control" id="date" name="date" placeholder="Date">
     </div>
     <div class="form-group">
         <label for="motif">Motif</label>
-        <input type="text" class="form-control" id="motif" name="motif" placeholder="Motif">
+        <input type="text" required class="form-control" id="motif" name="motif" placeholder="Motif">
     </div>
     <div class="form-group">
-        <label for="duree">Durée</label>
-        <input type="text" class="form-control" id="duree" name="duree" placeholder="Durée">
+        <label for="duree">Durée (hh:mm)</label>
+        <input type="time"  required class="form-control" id="duree" name="duree" placeholder="Durée">
     </div>
-    <button type="submit" class="w-full bg-green-500 hover:bg-green-600 text-white rounded-lg py-5 font-semibold">Ajouter un rendez vous</button>
+    <button type="submit" class="w-full bg-blue-500 hover:bg-blue-600 text-white rounded-lg py-5 font-semibold">Ajouter un rendez vous</button>
 </form>
     </div>
 </div>

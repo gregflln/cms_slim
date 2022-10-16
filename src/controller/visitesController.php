@@ -49,13 +49,19 @@ class VisitesController extends Controller
     public function store(Request $req, Response $res, $args) : Response
     {
         //use model to create new rendez-cous from post data
-        $data = $_POST;
+        $data = $req->getParsedBody();
+
+        $duration = explode(":", $data['duree']);
+        $h = $duration[0] * 60;
+        $m = $duration[1];
+        $data['duree'] = $h + $m;
         //data validation
         $this->model->create($data);
         //redirect to index reponse psr7
-        return $res->withHeader('Location', '/visites');
+        return $res->withHeader('Location', '/app/beneficiaires/show/' . $data['beneficiaire'])->withStatus(302);
         
     }
+    /*
     public function edit(Request $req, Response $res, $args) : Response
     {
         //get post id and return view
@@ -85,5 +91,5 @@ class VisitesController extends Controller
         //redirect to index
         return $res->withHeader('Location', '/visites');
     }
-
+*/
 }

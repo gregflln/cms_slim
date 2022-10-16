@@ -48,25 +48,33 @@ class RendezVousController extends Controller
     {
         //use model to create new rendez-cous from post data
         $data = $_POST;
+
+        $duration = explode(":", $data['duree']);
+        $h = $duration[0] * 60;
+        $m = $duration[1];
+        $data['duree'] = $h + $m;
         //data validation
         $this->model->create($data);
         //redirect to index
-        return $res->withHeader('Location', '/beneficiaires/show/' . $data['beneficiaire'])->withStatus(302);
+        return $res->withHeader('Location', '/app/beneficiaires/show/' . $data['beneficiaire'])->withStatus(302);
     }
-
+/*
     public function edit(Request $req, Response $res, $args) : Response
     {
         return $this->render('app/rendezvous/edit',[]);
     }
-
+    */
+/*
     public function update(Request $req, Response $res, $args) : Response
     {
         return $this->render('app/rendezvous/update',[]);
     }
-
+    */
+/*
     public function delete(Request $req, Response $res, $args) : Response
     {
         $this->model->delete($_GET['id']);
         return $res->withHeader('Location', '/rendezvous');
     }
+    */
 }

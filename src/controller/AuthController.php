@@ -56,9 +56,13 @@ class AuthController extends Controller
     private function generateToken(array $user) : string
     {
         $key = $_ENV['JWT_KEY'];
+
+        $role = $user["admin"] == 1 ? "admin" : "user";
+
         $payload = [
             'id' => $user['id'],
-            'email' => $user['email']
+            'email' => $user['email'],
+            'role' => $role,
         ];
         $token = JWT::encode($payload, $key, "HS256");
         return $token;
